@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: [ubuntu-latest]
     name: Buy lotto
+    environment: Configure env
     steps:  
 
       - uses: actions/checkout@v3    
