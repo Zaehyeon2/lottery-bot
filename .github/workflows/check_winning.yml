@@ -1,14 +1,13 @@
 name: Check Winning
 on:
   schedule:
-    - cron: 0 13 * * 6 # every Saturday on 10:00 PM (KST)
+    - cron: 10 13 * * 6 # every Saturday on 10:10 PM (KST)
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: [ubuntu-latest]
     name: Check Winning
-    environment: Configure env 
     steps:  
 
       - uses: actions/checkout@v3    
