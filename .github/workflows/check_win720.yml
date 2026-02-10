@@ -1,0 +1,27 @@
+name: Check Win 720
+on:
+  schedule:
+    - cron: 10 13 * * 4 # every Thursday on 10:10 PM (KST)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    name: Check Win 720
+    steps:  
+
+      - uses: actions/checkout@v3    
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
+
+      - name: Run Scripts
+        run: make check_win720 # or use 'make check_lotto' / 'make check_win720' for granular check
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          COUNT: ${{ secrets.COUNT }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL:  ${{ secrets.DISCORD_WEBHOOK_URL }}
