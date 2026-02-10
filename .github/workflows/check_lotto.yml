@@ -1,4 +1,4 @@
-name: Check Winning
+name: Check Lotto
 on:
   schedule:
     - cron: 10 13 * * 6 # every Saturday on 10:10 PM (KST)
@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: [ubuntu-latest]
-    name: Check Winning
+    name: Check Lotto
     steps:  
 
       - uses: actions/checkout@v3    
@@ -18,7 +18,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Run Scripts
-        run: make check # or use 'make check_lotto' / 'make check_win720' for granular check
+        run: make check_lotto # or use 'make check_lotto' / 'make check_win720' for granular check
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
